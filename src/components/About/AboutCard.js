@@ -8,12 +8,9 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-          currently working as a UI developer at Cognosia. 
             Hi Everyone, I am <span className="purple">Santhosh Kumar </span>
             from <span className="purple">Hyderabad, India</span>
-            <br />
-            currently working as a UI developer at Cognosia.
-            <br />
+            
             I have completed my Master of Computer Application (MCA) 
             from Osmania University in the year 2022
             <br />

@@ -4,7 +4,6 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FaWhatsapp } from "react-icons/fa";
 
-
 const ContactUs = () => {
   const form = useRef();
 
