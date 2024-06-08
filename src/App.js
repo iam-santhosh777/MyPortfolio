@@ -16,11 +16,22 @@ import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { getToken } from "firebase/messaging";
+import { requestPermission } from "./components/utils/firebase";
 
 function App() {
   const [load, upadateLoad] = useState(true);
 
   useEffect(() => {
+    const fetchToken = async () => {
+      const token = await requestPermission();
+      if (token) {
+        console.log('FCM Token:', token);
+      }
+    };
+
+    fetchToken();
+
     const timer = setTimeout(() => {
       upadateLoad(false);
     }, 1200);
@@ -28,6 +39,17 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/firebase-messaging-sw.js')
+      .then((registration) => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch((error) => {
+        console.error('Service Worker registration failed:', error);
+      });
+  }
+  
   return (
     <Router>
       <Preloader load={load} />
